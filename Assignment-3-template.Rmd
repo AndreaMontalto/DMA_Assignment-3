@@ -182,9 +182,14 @@ d1 <- aggregate(Gasoline$lgaspcar, list(Gasoline$country), FUN = mean)
 Gasoline<- left_join(d1, Gasoline)
 
    ggplot(data = Gasoline, aes(x = country, y = lgaspcar)) +
-     geom_point() +
+     geom_point(color = 'black') +
      geom_line(aes( x=country, y = m_lgaspcar), col = "red", group=1) +
-     labs(x = "country", y = "logarithm of motor gasoline consumption per car")
+     labs(x = "country", y = "logarithm of motor gasoline consumption per car") + 
+     theme_minimal()+
+     theme(axis.text.x = element_text(size = 10, angle = 45, hjust = 1), 
+           axis.text.y = element_text(size = 10), 
+           axis.title = element_text(size = 12), 
+           legend.position = 'right')
    
 #Conclusion
    #In regards to plot 1, we observe a negative trend in motor gasoline consumption per car for each country across time. However, since countries like Turkey,Japan and Greece have higher decrease in the Dependent variable, we need to check for heterogenity with plot 2. 
